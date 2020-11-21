@@ -61,8 +61,8 @@ export default function HomeContainer() {
   };
 
   return (
-    <Grid container justify="center">
-      Your Eating Calendar
+    <Grid container justify="center" alignItems="center" direction="column">
+      <h1>Your Eating Calendar</h1>
       <Calendar
         calendarType="US"
         minDetail="year"

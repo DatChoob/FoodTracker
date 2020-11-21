@@ -38,25 +38,32 @@ export default function HomeContainer() {
   };
 
   return (
-    <Container style={{ display: "flex", justifyContent: "center" }}>
-      <Paper square className={classes.root}>
-        <Tabs
-          value={value}
-          onChange={handleChange}
-          variant="fullWidth"
-          indicatorColor="secondary"
-          textColor="secondary"
-          aria-label="icon label tabs example"
-        >
-          <Tab icon={<FastfoodIcon />} label="FOOD" />
-          <Tab icon={<LocalDrinkIcon />} label="WATER" />
-        </Tabs>
-        <SnackbarProvider maxSnack={3}>
-          {value === 0 && <FoodContainer />}
-          {value === 1 && <WaterContainer />}
-        </SnackbarProvider>
-      </Paper>
-    </Container>
+    <>
+      <div style={{ textAlign: "center" }}>
+        <h1>
+          {value == 0 ? "What did you eat today?" : "What did you drink today?"}
+        </h1>
+      </div>
+      <Container style={{ display: "flex", justifyContent: "center" }}>
+        <Paper square className={classes.root}>
+          <Tabs
+            value={value}
+            onChange={handleChange}
+            variant="fullWidth"
+            indicatorColor="secondary"
+            textColor="secondary"
+            aria-label="icon label tabs example"
+          >
+            <Tab icon={<FastfoodIcon />} label="FOOD" />
+            <Tab icon={<LocalDrinkIcon />} label="WATER" />
+          </Tabs>
+          <SnackbarProvider maxSnack={3}>
+            {value === 0 && <FoodContainer />}
+            {value === 1 && <WaterContainer />}
+          </SnackbarProvider>
+        </Paper>
+      </Container>
+    </>
   );
 }
 
