@@ -33,7 +33,7 @@ export default function AppRouter() {
       <Router basename="food-tracker">
         {/* <Header /> */}
         <CssBaseline />
-        <Container style={{ paddingTop: "96px" }}>
+        <Container>
           <Switch>
             <Route path="/login" component={LoginContainer} />
             {isLoggedIn && (
