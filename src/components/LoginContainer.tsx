@@ -1,5 +1,5 @@
 import React, { useCallback, useContext, useEffect } from "react";
-import { Container, Grid } from "@material-ui/core";
+import { Button, Container, Grid } from "@material-ui/core";
 import firebase from "firebase/app";
 import { useHistory } from "react-router-dom";
 import { useAuth } from "reactfire";
@@ -15,9 +15,8 @@ export default function LoginContainer() {
       .then((user: firebase.auth.UserCredential) => {
         console.log(user);
         if (user) {
-          console.log("routing to home");
-          history.push("/");
           setLoggedIn(true);
+          history.push("/");
         }
       });
   }, [auth, history, setLoggedIn]);
@@ -32,13 +31,13 @@ export default function LoginContainer() {
   return (
     <Container>
       <Grid container justify="center">
-        <button onClick={signInWithGoogle}>
+        <Button variant="contained" onClick={signInWithGoogle}>
           <img
             src="https://img.icons8.com/ios-filled/50/000000/google-logo.png"
             alt="google icon"
           />
           <span> Continue with Google</span>
-        </button>
+        </Button>
       </Grid>
     </Container>
   );
