@@ -30,7 +30,7 @@ export default function AppRouter() {
   }, [user, isLoggedIn]);
   return (
     <AuthContext.Provider value={context}>
-      <Router>
+      <Router basename="food-tracker">
         {/* <Header /> */}
         <CssBaseline />
         <Container style={{ paddingTop: "96px" }}>
