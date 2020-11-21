@@ -41,7 +41,9 @@ export default function HomeContainer() {
     <>
       <div style={{ textAlign: "center" }}>
         <h1>
-          {value == 0 ? "What did you eat today?" : "What did you drink today?"}
+          {value === 0
+            ? "What did you eat today?"
+            : "What did you drink today?"}
         </h1>
       </div>
       <Container style={{ display: "flex", justifyContent: "center" }}>
@@ -201,7 +203,7 @@ function FoodContainer() {
               </Button>
               <img
                 alt="uploaded-file"
-                style={{ width: "200px" }}
+                style={{ width: "200px", height: "200px" }}
                 src={URL.createObjectURL(file)}
               />
             </div>
