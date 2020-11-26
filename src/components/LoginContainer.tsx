@@ -11,13 +11,9 @@ export default function LoginContainer() {
   const history = useHistory();
   const signInWithGoogle = useCallback(() => {
     auth
-      .signInWithPopup(new firebase.auth.GoogleAuthProvider())
-      .then((user: firebase.auth.UserCredential) => {
-        console.log(user);
-        if (user) {
-          setLoggedIn(true);
-          history.push("/");
-        }
+      .signInWithRedirect(new firebase.auth.GoogleAuthProvider())
+      .catch((err) => {
+        console.log(err);
       });
   }, [auth, history, setLoggedIn]);
 

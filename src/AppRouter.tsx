@@ -11,7 +11,7 @@ import HomeContainer from "./components/HomeContainer";
 import HistoryContainer from "./components/HistoryContainer";
 import FoodDateContainer from "./components/FoodDateContainer";
 import FooterNavbar from "./FooterNavbar";
-import { useUser } from "reactfire";
+import { useAuth, useUser } from "reactfire";
 import { User } from "firebase";
 import AuthContext from "./AuthContext";
 
