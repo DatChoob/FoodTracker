@@ -60,7 +60,12 @@ export default function Header() {
     <div className={classes.root}>
       <AppBar position="fixed">
         <Toolbar>
-          <img className={classes.image} src={"/images/turtleicon.png"} />
+          <img
+            className={classes.image}
+            src={`${history.createHref({
+              pathname: "/",
+            })}images/turtleicon.png`}
+          />
           <Typography variant="h6" className={classes.title}>
             Food Tracker
           </Typography>
