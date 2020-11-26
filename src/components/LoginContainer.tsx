@@ -1,10 +1,34 @@
 import React, { useCallback, useContext, useEffect } from "react";
-import { Button, Container, Grid } from "@material-ui/core";
+import { Button, Container, Grid, makeStyles } from "@material-ui/core";
 import firebase from "firebase/app";
 import { useHistory } from "react-router-dom";
 import { useAuth } from "reactfire";
 import AuthContext from "../AuthContext";
+import { ReactComponent as GoogleLogo } from "../googlelogo.svg";
+
+const useStyles = makeStyles((theme) => ({
+  googleButton: {
+    background: "#FFF",
+    borderRadius: "1px",
+    boxShadow: "0 2px 4px 0 rgba(0, 0, 0, 0.25)",
+  },
+  googleButtonContent: {
+    display: "flex",
+    alignItems: "center",
+    width: "300px",
+    height: "50px",
+  },
+  googleButtonLogo: {
+    padding: "15px",
+    height: "inherit",
+  },
+  signInGoogleText: {
+    flexGrow: 1,
+    textAlign: "center",
+  },
+}));
 export default function LoginContainer() {
+  const classes = useStyles();
   const { setLoggedIn } = useContext(AuthContext);
 
   const auth = useAuth();
@@ -26,13 +50,19 @@ export default function LoginContainer() {
 
   return (
     <Container>
-      <Grid container justify="center">
-        <Button variant="contained" onClick={signInWithGoogle}>
-          <img
-            src="https://img.icons8.com/ios-filled/50/000000/google-logo.png"
-            alt="google icon"
-          />
-          <span> Continue with Google</span>
+      <Grid
+        container
+        alignItems="center"
+        justify="center"
+        style={{ minHeight: "calc(100vh - 56px)" }}
+      >
+        <Button onClick={signInWithGoogle} className={classes.googleButton}>
+          <div className={classes.googleButtonContent}>
+            <div className={classes.googleButtonLogo}>
+              <GoogleLogo style={{ width: "18px", height: "18px" }} />
+            </div>
+            <p className={classes.signInGoogleText}>Sign in with Google</p>
+          </div>
         </Button>
       </Grid>
     </Container>

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Container, CssBaseline } from "@material-ui/core";
+import { CssBaseline } from "@material-ui/core";
 import {
   BrowserRouter as Router,
   Switch,
@@ -10,10 +10,10 @@ import LoginContainer from "./components/LoginContainer";
 import HomeContainer from "./components/HomeContainer";
 import HistoryContainer from "./components/HistoryContainer";
 import FoodDateContainer from "./components/FoodDateContainer";
-import FooterNavbar from "./FooterNavbar";
-import { useAuth, useUser } from "reactfire";
+import { useUser } from "reactfire";
 import { User } from "firebase";
 import AuthContext from "./AuthContext";
+import Header from "./Header";
 
 export default function AppRouter() {
   const user: User = useUser();
@@ -31,24 +31,22 @@ export default function AppRouter() {
   return (
     <AuthContext.Provider value={context}>
       <Router basename="food-tracker">
-        {/* <Header /> */}
+        <Header />
         <CssBaseline />
-        <Container>
-          <Switch>
-            <Route path="/login" component={LoginContainer} />
-            {isLoggedIn && (
-              <>
-                <Route exact path="/history" component={HistoryContainer} />
-                <Route exact path="/foodDate" component={FoodDateContainer} />
-                <Route path="/" exact component={HomeContainer} />
-              </>
-            )}
-            <Route path="*">
-              <Redirect to="/login" />
-            </Route>
-          </Switch>
-        </Container>
-        <FooterNavbar />
+        <Switch>
+          <Route path="/login" component={LoginContainer} />
+          {isLoggedIn && (
+            <>
+              <Route exact path="/history" component={HistoryContainer} />
+              <Route exact path="/foodDate" component={FoodDateContainer} />
+              <Route path="/" exact component={HomeContainer} />
+            </>
+          )}
+          <Route path="*">
+            <Redirect to="/login" />
+          </Route>
+        </Switch>
+        {/* <FooterNavbar /> */}
       </Router>
     </AuthContext.Provider>
   );
